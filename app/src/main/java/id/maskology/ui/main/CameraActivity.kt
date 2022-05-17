@@ -1,12 +1,12 @@
-package id.maskology.ui
+package id.maskology.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import id.maskology.R
 
-class MainActivity : AppCompatActivity() {
+class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_camera)
     }
 }

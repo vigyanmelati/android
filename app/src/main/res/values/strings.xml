@@ -4,4 +4,17 @@
     <string name="title_nav_home">Home</string>
     <string name="title_nav_camera">Camera</string>
     <string name="title_nav_education">Education</string>
+    <string name="img_product">img_product</string>
+    <string name="sign_in_with_google">Sign In with Google</string>
+    <string name="name_ecommerce">Name Ecommerce</string>
+    <string name="address_ecommerce">address ecommerce</string>
+    <string name="call_seller">Hubungi Penjual</string>
+    <string name="desc_ecommerce">Desc Ecommerce</string>
+    <string name="name_product">Name Product</string>
+    <string name="writter_product">Writter product</string>
+    <string name="year_product">Year product</string>
+    <string name="story_product">Story Product</string>
+    <string name="products">Products</string>
+    <string name="price">Price</string>
+    <string name="seller">Seller</string>
 </resources>

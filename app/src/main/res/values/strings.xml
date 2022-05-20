@@ -17,4 +17,24 @@
     <string name="products">Products</string>
     <string name="price">Price</string>
     <string name="seller">Seller</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_name">Product Name</string>
+    <string name="store_name">Store Name</string>
+    <string name="title_news">Title News</string>
+    <string name="news_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit .....</string>
+    <string name="category">Category</string>
+    <string name="mask_name">Mask Name</string>
+    <string name="mask_story_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna .....</string>
+    <string name="new_products">New Products</string>
+    <string name="hint_search_home">What are you looking for today?</string>
+    <string name="hint_search_education">What do you want to learn today?</string>
+    <string name="mask_story_title">Mask Story</string>
+    <string name="stock">Stock:</string>
+    <string name="dummy_price">Rp.999.999</string>
+    <string name="dummy_stock">999999</string>
+    <string name="description">Description</string>
+    <string name="dummy_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="dummy_phone_number">088888888</string>
+    <string name="store">Store</string>
+    <string name="cantact_store">Cantact Store</string>
 </resources>

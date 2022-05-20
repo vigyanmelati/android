@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_large_product"
+    style="@style/CardViewLargeProduct"
+    app:cardElevation="8dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_product"
+            android:layout_width="match_parent"
+            android:layout_height="137.69dp"
+            android:layout_margin="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_product_name"
+            style="@style/TextStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="@string/product_name"
+            app:layout_constraintEnd_toEndOf="@+id/img_product"
+            app:layout_constraintStart_toStartOf="@+id/img_product"
+            app:layout_constraintTop_toBottomOf="@+id/img_product" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_product_price"
+            style="@style/TextStyle.SmallPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/product_price"
+            app:layout_constraintEnd_toEndOf="@+id/img_product"
+            app:layout_constraintStart_toStartOf="@+id/img_product"
+            app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_store_name"
+            style="@style/TextStyle.Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:text="@string/store_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/img_product"
+            app:layout_constraintStart_toStartOf="@+id/img_product"
+            app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

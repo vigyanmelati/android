@@ -1,4 +1,4 @@
-package id.maskology.ui.main
+package id.maskology.ui.detailEcommerce
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

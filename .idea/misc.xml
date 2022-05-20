@@ -3,27 +3,57 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/ic_baseline_camera_alt.xml" value="0.1" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/ic_baseline_home.xml" value="0.1" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/ic_cameraswitch.xml" value="0.119" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/line.xml" value="0.119" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/round_above.xml" value="0.119" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/round_left.xml" value="0.1" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_camera.xml" value="0.1308876811594203" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_detail_ecommerce.xml" value="0.13405797101449277" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_main.xml" value="0.1308876811594203" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_story_product.xml" value="0.16666666666666666" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/card_search.xml" value="0.1308876811594203" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_education.xml" value="0.1308876811594203" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_home.xml" value="0.1308876811594203" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/item_banner.xml" value="0.1308876811594203" />
-        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/item_row_product.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/background_glass_fx.xml" value="0.244" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/background_glass_fx_small.xml" value="0.244" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/ic_baseline_home.xml" value="0.118" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/ic_indicator_active.xml" value="0.118" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/ic_indicator_inactive.xml" value="0.118" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/item_category.xml" value="0.244" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/line.xml" value="0.244" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/round_above.xml" value="0.244" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/round_left.xml" value="0.244" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/title_background.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_camera.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_detail_ecommerce.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_detail_product.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_home2.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_mask_story.xml" value="0.25" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/activity_story_product.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/card_banner.xml" value="0.2" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/card_search.xml" value="0.3184713375796178" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/card_search_education.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/card_search_home.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/collapsebar_detail_product.xml" value="0.2898550724637681" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/collapsebar_home.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/description_product_layout.xml" value="0.2119460500963391" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/fragment_camera.xml" value="0.11481481481481481" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/fragment_education.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/fragment_home.xml" value="0.4018058690744921" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/header_detail_product_layout.xml" value="0.2898550724637681" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/header_home_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_banner.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_category.xml" value="0.5" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_large_product.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_mask_story.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_news.xml" value="0.5" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_product.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_row_product.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_small_product.xml" value="0.813953488372093" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/list_product_layout.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/mini_profile_layout.xml" value="0.5" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/test.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/toolbar_education.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/toolbar_home.xml" value="0.3625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/menu/nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

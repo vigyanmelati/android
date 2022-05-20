@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="id.maskology">
+    package="id.maskology" >
 
     <application
         android:allowBackup="true"
@@ -8,22 +8,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Maskology">
+        android:theme="@style/Theme.Maskology" >
         <activity
-            android:name=".ui.main.DetailEcommerceActivity"
+            android:name=".ui.detailProduct.DetailProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.LoginActivity"
+            android:name=".ui.detailEcommerce.DetailEcommerceActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.CameraActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.StoryProductActivity"
+            android:name=".ui.camera.CameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.maskStory.MaskStoryActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

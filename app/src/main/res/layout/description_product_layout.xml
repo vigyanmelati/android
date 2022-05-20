@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/description_product_layout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_price"
+        style="@style/TextStyle.LargePrice"
+        android:layout_width="0dp"
+        android:text="@string/dummy_price"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_stock"
+        style="@style/TextStyle.Description"
+        android:layout_width="wrap_content"
+        android:text="@string/stock"
+        app:layout_constraintStart_toStartOf="@+id/tv_price"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_stock"
+        style="@style/TextStyle.Description"
+        android:layout_width="0dp"
+        android:text="@string/dummy_stock"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title_stock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_title_stock"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_stock" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_description"
+        style="@style/TextStyle.SubHeader"
+        android:layout_width="0dp"
+        android:text="@string/description"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_stock" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_description"
+        style="@style/TextStyle.Description"
+        android:layout_width="0dp"
+        android:text="@string/dummy_description"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_description"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_store"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/dummy_2"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_Store"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_Store" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_store_name"
+        style="@style/TextStyle.Title"
+        android:layout_width="0dp"
+        android:layout_marginStart="16dp"
+        android:maxLines="1"
+        android:text="@string/store_name"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_Store"
+        app:layout_constraintStart_toEndOf="@+id/img_store"
+        app:layout_constraintTop_toTopOf="@+id/img_store" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_adrress"
+        style="@style/TextStyle.SubTitle"
+        android:layout_width="0dp"
+        android:maxLines="1"
+        android:text="@string/address_ecommerce"
+        app:layout_constraintEnd_toEndOf="@+id/tv_store_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_store_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_phone_number"
+        style="@style/TextStyle.Description"
+        android:layout_width="0dp"
+        android:maxLines="1"
+        android:text="@string/dummy_phone_number"
+        app:layout_constraintEnd_toEndOf="@+id/tv_adrress"
+        app:layout_constraintStart_toStartOf="@+id/tv_adrress"
+        app:layout_constraintTop_toBottomOf="@+id/tv_adrress" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_Store"
+        style="@style/TextStyle.SubHeader"
+        android:layout_width="0dp"
+        android:text="@string/store"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_camera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/cantact_store"
+        android:textAppearance="@style/TextStyle.SubTitle"
+        app:cornerRadius="4dp"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone_number" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

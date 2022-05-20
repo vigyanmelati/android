@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import id.maskology.R
 import id.maskology.databinding.ActivityMainBinding
+import id.maskology.ui.camera.CameraActivity
+import id.maskology.ui.detailProduct.DetailProductActivity
 import id.maskology.ui.main.fragment.EducationFragment
 import id.maskology.ui.main.fragment.HomeFragment
 
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toCameraActivity() {
-        startActivity(Intent(this@MainActivity, CameraActivity::class.java))
+        startActivity(Intent(this@MainActivity, DetailProductActivity::class.java))
     }
 
     private fun setFragment(fragment: Fragment) {

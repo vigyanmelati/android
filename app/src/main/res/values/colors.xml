@@ -7,4 +7,5 @@
     <color name="cream">#FFE9E5D6</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="semiTransparent">#C6000000</color>
 </resources>

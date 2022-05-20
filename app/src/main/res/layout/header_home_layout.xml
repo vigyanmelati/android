@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/header_home"
+    style="@style/Contentbar">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_banner_slider"
+        android:layout_width="match_parent"
+        android:layout_height="184dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/indicator_slide_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="175dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/vp_banner_slider"
+        app:layout_constraintTop_toTopOf="@+id/vp_banner_slider" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        style="@style/TextStyle.SubHeader"
+        android:text="@string/new_products"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vp_banner_slider" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_new_product"
+        android:layout_width="match_parent"
+        android:layout_height="174dp"
+        android:paddingHorizontal="8dp"
+        tools:listitem="@layout/item_small_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+        tools:ignore="RtlSymmetry" />
+</androidx.constraintlayout.widget.ConstraintLayout>

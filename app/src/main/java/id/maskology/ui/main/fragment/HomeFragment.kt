@@ -39,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             Banner(R.drawable.dummy_3)
         )
 
-        binding.vpBannerSlider.apply {
+        binding.collapsedbar.headerHome.vpBannerSlider.apply {
             bannerSlideAdapter = BannerSlideAdapter(listBanner)
             sliderHandler = Handler()
             sliderRun = Runnable {
@@ -84,14 +84,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 )
                 this?.layoutParams = layoutParams
             }
-            binding.indicatorSlideLayout.addView(indicator[i])
+            binding.collapsedbar.headerHome.indicatorSlideLayout.addView(indicator[i])
         }
     }
 
     private fun setActiveBannerIndicator(index: Int) {
-        val childCount = binding.indicatorSlideLayout.childCount
+        val childCount = binding.collapsedbar.headerHome.indicatorSlideLayout.childCount
         for (i in 0 until childCount) {
-            val imageView = binding.indicatorSlideLayout[i] as ImageView
+            val imageView = binding.collapsedbar.headerHome.indicatorSlideLayout[i] as ImageView
             if (i == index) {
                 imageView.setImageDrawable(
                     ContextCompat.getDrawable(

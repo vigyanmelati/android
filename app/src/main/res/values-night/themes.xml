@@ -13,4 +13,51 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Text Style. -->
+    <style name="TextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+    </style>
+
+    <!-- Background TextView Style. -->
+    <style name="BackgroundTextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@color/dark_green</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <!-- Toolbar Style. -->
+    <style name="CustomToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimarySurface</item>
+    </style>
+
+    <style name="CustomCollapesebarHome">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorPrimarySurface</item>
+    </style>
+
+    <style name="CustomAppbarHome">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorPrimarySurface</item>
+    </style>
+
+    <style name="CustomAppbarDetailProduct">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">416dp</item>
+        <item name="android:background">?attr/colorPrimarySurface</item>
+    </style>
+
+    <style name="Contentbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorPrimarySurface</item>
+    </style>
+
 </resources>

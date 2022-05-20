@@ -18,15 +18,36 @@
     <style name="TextStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
     </style>
+
     <style name="TextStyle.Header">
         <item name="android:fontFamily">@font/noto_sans_bold</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/cream</item>
+    </style>
+
+    <style name="TextStyle.HeaderLarge">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/cream</item>
+    </style>
+
+    <style name="TextStyle.SmallPrice">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextStyle.LargePrice">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/dark_green</item>
     </style>
 
     <style name="TextStyle.SubHeader">
-        <item name="android:fontFamily">@font/noto_sans_regular</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/noto_sans_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dark_green</item>
     </style>
 
     <style name="TextStyle.Title">
@@ -39,9 +60,26 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="TextStyle.SmallTitle">
+        <item name="android:fontFamily">@font/noto_sans_medium</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <style name="TextStyle.Description">
         <item name="android:fontFamily">@font/noto_sans_regular</item>
         <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextStyleCategory">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">@font/noto_sans_medium</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
     </style>
 
     <!-- Item Card Style. -->
@@ -50,8 +88,8 @@
         <item name="android:layout_height">32dp</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="cardCornerRadius">4dp</item>
         <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/dark_brown</item>
@@ -68,6 +106,57 @@
         <item name="strokeColor">@color/dark_brown</item>
     </style>
 
+    <style name="CardViewLargeProduct">
+        <item name="android:layout_width">156.69dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+
+    <style name="CardViewSmallProduct">
+        <item name="android:layout_width">112dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+
+    <style name="CardViewNews">
+        <item name="android:layout_width">168dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+
+    <style name="CardCategory">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="android:backgroundTint">@color/dark_green</item>
+    </style>
+
+    <style name="CardMaskStory">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">88dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+
     <!-- Item SearchView Style. -->
     <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
         <item name="android:textColorHint">@color/light_green</item>
@@ -75,6 +164,45 @@
         <item name="android:background">@null</item>
         <item name="android:textSize">14sp</item>
         <item name="android:queryBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- Background TextView Style. -->
+    <style name="BackgroundTextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@color/light_green</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <!-- Toolbar Style. -->
+    <style name="CustomToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/actionBarSize</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="CustomCollapesebarHome">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="CustomAppbarHome">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="CustomAppbarDetailProduct">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">416dp</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="Contentbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorSurface</item>
     </style>
 
 </resources>

@@ -31,13 +31,8 @@
 
     <TextView
         android:id="@+id/name_ecommerce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyle.Header.Dark"
         android:text="@string/name_ecommerce"
-        android:textStyle="bold"
-        android:fontFamily="@font/noto_sans_bold"
-        android:textSize="20sp"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,11 +42,8 @@
 
     <TextView
         android:id="@+id/address_ecommerce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextStyle.SmallPrice"
         android:text="@string/address_ecommerce"
-        android:fontFamily="@font/noto_sans_regular"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,12 +52,14 @@
 
     <Button
         android:id="@+id/btn_callSeller"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:backgroundTint="@color/dark_brown"
-        android:text="@string/call_seller"
-        android:fontFamily="@font/noto_sans_bold"
-        android:textSize="14sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/cantact_store"
+        android:textAppearance="@style/TextStyle.SubTitle"
+        app:cornerRadius="4dp"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,9 +68,11 @@
 
     <TextView
         android:id="@+id/desc_ecommerce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/desc_ecommerce"
+        style="@style/TextStyle.Description"
+        android:layout_width="0dp"
+        android:text="@string/mask_story_description"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
@@ -90,8 +86,8 @@
         android:src="@drawable/line"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
-        app:layout_constraintVertical_bias="0.705"
-        tools:layout_editor_absoluteX="-16dp" />
+        app:layout_constraintVertical_bias="0.695"
+        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product_ecommerce"
@@ -103,6 +99,6 @@
         app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="-16dp"
-        tools:listitem="@layout/item_row_product"/>
+        tools:listitem="@layout/item_large_product"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

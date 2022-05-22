@@ -9,11 +9,11 @@
     <string name="name_ecommerce">Name Ecommerce</string>
     <string name="address_ecommerce">address ecommerce</string>
     <string name="call_seller">Hubungi Penjual</string>
-    <string name="desc_ecommerce">Desc Ecommerce</string>
+    <string name="desc_ecommerce">Lorem ipsum dolor sit amet, consectetur adipiscing elit  sed do eiusmod tempor incididunt ut labor</string>
     <string name="name_product">Name Product</string>
     <string name="writter_product">Writter product</string>
     <string name="year_product">Year product</string>
-    <string name="story_product">Story Product</string>
+    <string name="story_product">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna .....</string>
     <string name="products">Products</string>
     <string name="price">Price</string>
     <string name="seller">Seller</string>
@@ -36,5 +36,5 @@
     <string name="dummy_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
     <string name="dummy_phone_number">088888888</string>
     <string name="store">Store</string>
-    <string name="cantact_store">Cantact Store</string>
+    <string name="cantact_store">Contact Store</string>
 </resources>

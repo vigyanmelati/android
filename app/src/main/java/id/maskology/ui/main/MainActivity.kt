@@ -1,8 +1,13 @@
 package id.maskology.ui.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import id.maskology.R
 import id.maskology.databinding.ActivityMainBinding
@@ -24,6 +29,14 @@ class MainActivity : AppCompatActivity() {
 
         setFragment(homeFragment)
 
+        if (!allPermissionsGranted()) {
+            ActivityCompat.requestPermissions(
+                this,
+                REQUIRED_PERMISSIONS,
+                REQUEST_CODE_PERMISSIONS
+            )
+        }
+
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId){
                 R.id.nav_home -> setFragment(homeFragment)
@@ -35,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toCameraActivity() {
-        startActivity(Intent(this@MainActivity, DetailProductActivity::class.java))
+        startActivity(Intent(this@MainActivity, CameraActivity::class.java))
     }
 
     private fun setFragment(fragment: Fragment) {
@@ -43,5 +56,32 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fragment_container, fragment)
             commit()
         }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (!allPermissionsGranted()) {
+                Toast.makeText(
+                    this,
+                    "Tidak mendapatkan permission.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
+            }
+        }
+    }
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    companion object {
+        const val CAMERA_X_RESULT = 200
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS = 10
     }
 }

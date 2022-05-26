@@ -1,5 +1,6 @@
 package id.maskology.ui.main.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -44,11 +45,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             sliderHandler = Handler()
             sliderRun = Runnable {
                 currentItem += 1
-                Log.d("JAYAK", "$currentItem")
             }
             reSliderRun = Runnable {
                 currentItem = 0
-
             }
             adapter = bannerSlideAdapter
             setIndicatorBanner()
@@ -74,11 +73,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val layoutParams: LinearLayout.LayoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         layoutParams.setMargins(8, 0, 8, 0)
         for (i in indicator.indices){
-            indicator[i] = ImageView(requireActivity().applicationContext)
+            indicator[i] = ImageView(requireContext())
             indicator[i].apply {
                 this?.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireActivity().applicationContext,
+                        requireContext(),
                         R.drawable.ic_indicator_inactive
                     )
                 )
@@ -119,6 +118,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onResume()
         sliderHandler.postDelayed(sliderRun, 3000)
     }
-
 
 }

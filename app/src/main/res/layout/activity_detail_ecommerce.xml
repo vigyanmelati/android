@@ -1,104 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.detailEcommerce.DetailEcommerceActivity">
 
-    <ImageView
-        android:id="@+id/cover_ecommerce"
+    <include
+        android:id="@+id/collapsebar"
+        layout="@layout/collapsebar_detail_ecommerce"/>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@drawable/dummy_4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_ecommerce"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="440dp"
-        android:src="@drawable/dummy_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <include
+            android:id="@+id/list_product_ecommerce_layout"
+            layout="@layout/list_product_ecommerce_layout"/>
 
-    <TextView
-        android:id="@+id/name_ecommerce"
-        style="@style/TextStyle.Header.Dark"
-        android:text="@string/name_ecommerce"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
-        app:layout_constraintVertical_bias="0.424" />
+    </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/address_ecommerce"
-        style="@style/TextStyle.SmallPrice"
-        android:text="@string/address_ecommerce"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
-        app:layout_constraintVertical_bias="0.463" />
-
-    <Button
-        android:id="@+id/btn_callSeller"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
-        android:text="@string/cantact_store"
-        android:textAppearance="@style/TextStyle.SubTitle"
-        app:cornerRadius="4dp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
-        app:layout_constraintVertical_bias="0.536" />
-
-    <TextView
-        android:id="@+id/desc_ecommerce"
-        style="@style/TextStyle.Description"
-        android:layout_width="0dp"
-        android:text="@string/mask_story_description"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:src="@drawable/line"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
-        app:layout_constraintVertical_bias="0.695"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_product_ecommerce"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_ecommerce"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:listitem="@layout/item_large_product"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

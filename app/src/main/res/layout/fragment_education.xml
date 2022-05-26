@@ -14,6 +14,7 @@
         android:id="@+id/appCompatTextView"
         style="@style/TextStyle.SubHeader"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:text="@string/new_products"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -33,6 +34,7 @@
         android:id="@+id/tv_title_story"
         style="@style/TextStyle.SubHeader"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:text="@string/mask_story_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_new_product"/>

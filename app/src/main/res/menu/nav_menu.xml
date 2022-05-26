@@ -7,12 +7,23 @@
         android:title="@string/title_nav_home"/>
 
     <item
-        android:id="@+id/nav_camera"
-        android:icon="@drawable/ic_baseline_camera_alt"
-        android:title="@string/title_nav_camera"/>
-
-    <item
         android:id="@+id/nav_education"
         android:icon="@drawable/ic_baseline_local_library"
         android:title="@string/title_nav_education"/>
+
+    <item
+        android:id="@+id/placeholder_camera"
+        android:title=""
+        android:enabled="false"/>
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_baseline_favorite"
+        android:title="@string/title_nav_favorite"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_baseline_person"
+        android:title="@string/title_nav_profile"/>
+
 </menu>

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import id.maskology.R
 import id.maskology.databinding.ActivityMainBinding
 import id.maskology.ui.camera.CameraActivity
+import id.maskology.ui.detailEcommerce.DetailEcommerceActivity
 import id.maskology.ui.detailProduct.DetailProductActivity
 import id.maskology.ui.main.fragment.EducationFragment
 import id.maskology.ui.main.fragment.HomeFragment
@@ -40,11 +41,17 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId){
                 R.id.nav_home -> setFragment(homeFragment)
-                R.id.nav_camera -> toCameraActivity()
                 R.id.nav_education -> setFragment(educationFragment)
+                R.id.nav_favorite -> testActivity();
             }
             true
         }
+
+        binding.fabCamera.setOnClickListener { toCameraActivity() }
+    }
+
+    private fun testActivity() {
+        startActivity(Intent(this@MainActivity, DetailEcommerceActivity::class.java))
     }
 
     private fun toCameraActivity() {
@@ -78,6 +85,7 @@ class MainActivity : AppCompatActivity() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
+
 
     companion object {
         const val CAMERA_X_RESULT = 200

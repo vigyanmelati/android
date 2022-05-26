@@ -11,8 +11,8 @@
     <string name="call_seller">Hubungi Penjual</string>
     <string name="desc_ecommerce">Lorem ipsum dolor sit amet, consectetur adipiscing elit  sed do eiusmod tempor incididunt ut labor</string>
     <string name="name_product">Name Product</string>
-    <string name="writter_product">Writter product</string>
-    <string name="year_product">Year product</string>
+    <string name="writter_name">Writter Name</string>
+    <string name="year_article">Year Article</string>
     <string name="story_product">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna .....</string>
     <string name="products">Products</string>
     <string name="price">Price</string>
@@ -37,4 +37,7 @@
     <string name="dummy_phone_number">088888888</string>
     <string name="store">Store</string>
     <string name="cantact_store">Contact Store</string>
+    <string name="title_nav_favorite">Favorite</string>
+    <string name="title_nav_profile">Profile</string>
+    <string name="title_related_products">Related Products</string>
 </resources>

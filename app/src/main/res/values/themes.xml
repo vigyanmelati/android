@@ -21,6 +21,12 @@
         <item name="android:textColor">@android:color/primary_text_light</item>
     </style>
 
+    <style name="TransparentTextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
     <style name="TextStyle.Header">
         <item name="android:fontFamily">@font/noto_sans_bold</item>
         <item name="android:textSize">20sp</item>
@@ -202,6 +208,12 @@
     <style name="CustomAppbarDetailProduct">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">416dp</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="CustomAppbarDetailEcommerce">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">?attr/colorSurface</item>
     </style>
 

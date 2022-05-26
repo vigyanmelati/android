@@ -1,104 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.maskStory.MaskStoryActivity">
 
-    <ImageView
-        android:id="@+id/cover_post"
+    <include
+        android:id="@+id/collapsebar"
+        layout="@layout/collapsebar_detail_product"/>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:contentDescription="@string/img_product"
-        android:src="@drawable/dummy_4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:src="@drawable/round_left"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <include
+            android:id="@+id/description_story_mask_layout"
+            layout="@layout/description_story_mask_layout"/>
 
-    <TextView
-        android:id="@+id/name_product"
-        style="@style/TextStyle.Header.Dark"
-        android:text="@string/name_product"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_post"
-        app:layout_constraintVertical_bias="0.431" />
+    </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/writer_product"
-        style="@style/TextStyle.Title"
-        android:text="@string/writter_product"
-        android:textColor="@color/dark_brown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.439" />
 
-    <TextView
-        android:id="@+id/year_product"
-        style="@style/TextStyle.SubTitle"
-        android:text="@string/year_product"
-        android:textColor="@color/dark_brown"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_post"
-        app:layout_constraintVertical_bias="0.472" />
-
-    <TextView
-        android:id="@+id/story_product"
-        style="@style/TextStyle.Description"
-        android:layout_width="0dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/story_product"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover_post"
-        app:layout_constraintVertical_bias="0.552" />
-
-    <TextView
-        android:id="@+id/product"
-        style="@style/TextStyle.SubHeader"
-        android:text="@string/products"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_product_ecommerce"
-        android:layout_width="match_parent"
-        android:layout_height="174dp"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="8dp"
-        tools:listitem="@layout/item_small_product"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product"
-        tools:ignore="RtlSymmetry" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

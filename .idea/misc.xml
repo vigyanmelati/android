@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_detail_ecommerce.xml" value="0.1" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/collapsebar_detail_ecommerce.xml" value="0.13405797101449277" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_education.xml" value="0.13405797101449277" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_home.xml" value="0.13405797101449277" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_profile.xml" value="0.16666666666666666" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/header_detail_ecommerce_layout.xml" value="0.13405797101449277" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/background_glass_fx.xml" value="0.244" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/background_glass_fx_small.xml" value="0.244" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/ic_baseline_camera_alt.xml" value="0.1" />
@@ -61,7 +68,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

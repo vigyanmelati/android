@@ -16,6 +16,7 @@ import id.maskology.ui.detailEcommerce.DetailEcommerceActivity
 import id.maskology.ui.detailProduct.DetailProductActivity
 import id.maskology.ui.main.fragment.EducationFragment
 import id.maskology.ui.main.fragment.HomeFragment
+import id.maskology.ui.main.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val educationFragment = EducationFragment()
+        val profileFragment = ProfileFragment()
 
         setFragment(homeFragment)
 
@@ -42,7 +44,8 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.nav_home -> setFragment(homeFragment)
                 R.id.nav_education -> setFragment(educationFragment)
-                R.id.nav_favorite -> testActivity();
+                R.id.nav_favorite -> testActivity()
+                R.id.nav_profile -> setFragment(profileFragment)
             }
             true
         }

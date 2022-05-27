@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1095160753627",
+    "project_id": "maskology-a4075",
+    "storage_bucket": "maskology-a4075.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095160753627:android:82c04cd18fbd4c54084bfe",
+        "android_client_info": {
+          "package_name": "id.maskology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095160753627-ta60s7guhaekl4r3kn4r0pd7jir0iph9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.maskology",
+            "certificate_hash": "2059ca1c5662867346cb4c55eac617f9454c29fc"
+          }
+        },
+        {
+          "client_id": "1095160753627-modl3mpklob75pb9csk0vra5l398iod2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0AoB_EEiNhrgYUo2l_2KnDo9cKIHtLdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095160753627-modl3mpklob75pb9csk0vra5l398iod2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

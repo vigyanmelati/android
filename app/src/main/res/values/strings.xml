@@ -40,4 +40,6 @@
     <string name="title_nav_favorite">Favorite</string>
     <string name="title_nav_profile">Profile</string>
     <string name="title_related_products">Related Products</string>
+    <string name="name_user">Name User</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

@@ -10,7 +10,7 @@ import id.maskology.data.model.Category
 @Dao
 interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCategory(story: List<Category>)
+    suspend fun insertCategory(category: List<Category>)
 
     @Query("SELECT * FROM category")
     fun getAllCategory(): PagingSource<Int, Category>

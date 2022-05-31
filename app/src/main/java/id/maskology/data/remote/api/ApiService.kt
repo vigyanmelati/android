@@ -15,19 +15,19 @@ interface ApiService {
     @GET("category")
     suspend fun getAllCategory(
         @Query("page") page: Int,
-        @Query("size") size: Int
+        @Query("limit") size: Int
     ) : CategoryResponse
 
     @GET("store")
     suspend fun getAllStore(
         @Query("page") page: Int,
-        @Query("size") size: Int
+        @Query("limit") size: Int
     ) : StoreResponse
 
-    @GET("product")
+    @GET("products")
     suspend fun getAllProduct(
         @Query("page") page: Int,
-        @Query("size") size: Int
+        @Query("limit") size: Int
     ) : ProductResponse
 
     @GET("category/{id}")

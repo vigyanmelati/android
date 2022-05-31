@@ -16,27 +16,29 @@ data class Product(
     @field:SerializedName("storeId")
     val storeId: String,
 
+    @field:SerializedName("categoryId")
+    val categoryId: String,
+
     @field:SerializedName("name")
     val name: String,
 
-    @field:SerializedName("contact")
-    val contact: String,
+    @field:SerializedName("price")
+    val price: String,
+
+    @field:SerializedName("stock")
+    val stock: Int,
 
     @field:SerializedName("desc")
     val desc: String,
 
-    @field:SerializedName("email")
-    val email: String,
-
     @field:SerializedName("imageUrl")
     val imageUrl: String,
-
-    @field:SerializedName("backgroundUrl")
-    val backgroundUrl: String,
 
     @field:SerializedName("createdAt")
     val createdAt: String,
 
     @field:SerializedName("updatedAt")
     val updatedAt: String,
+
+
 ) : Parcelable

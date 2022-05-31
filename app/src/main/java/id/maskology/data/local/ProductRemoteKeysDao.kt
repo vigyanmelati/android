@@ -1,9 +1,11 @@
 package id.maskology.data.local
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
+@Dao
 interface ProductRemoteKeysDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllProductRemoteKeys(remoteKeys: List<ProductRemoteKeys>)

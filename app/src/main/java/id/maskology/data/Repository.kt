@@ -1,5 +1,6 @@
 package id.maskology.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.paging.*
@@ -16,17 +17,15 @@ class Repository(
     private val maskologyDatabase: MaskologyDatabase
 
 ) {
-    fun getAllProduct(): LiveData<PagingData<Product>> {
+    fun getAllProduct(): Flow<PagingData<Product>> {
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
-            config = PagingConfig(
-                pageSize = 5
-            ),
+            config = PagingConfig(pageSize = 5),
             remoteMediator = ProductRemoteMediator(maskologyDatabase, apiService),
             pagingSourceFactory = {
                 maskologyDatabase.productDao().getAllProduct()
             }
-        ).liveData
+        ).flow
     }
 
 

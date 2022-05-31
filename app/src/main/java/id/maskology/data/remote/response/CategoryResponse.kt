@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 import id.maskology.data.model.Category
 
 data class CategoryResponse(
-    @field:SerializedName("listCategory")
+    @field:SerializedName("data")
     val listCategory: List<Category>
 )

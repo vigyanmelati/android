@@ -45,8 +45,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        resultLauncher.launch(signInIntent)
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
+//        val signInIntent = googleSignInClient.signInIntent
+//        resultLauncher.launch(signInIntent)
     }
     private var resultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()

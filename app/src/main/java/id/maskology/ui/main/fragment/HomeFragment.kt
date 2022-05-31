@@ -9,13 +9,20 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.LinearLayout.HORIZONTAL
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import id.maskology.R
 import id.maskology.databinding.FragmentHomeBinding
 import id.maskology.data.model.Banner
+import id.maskology.ui.LoadingStateAdapter
+import id.maskology.ui.ViewModelFactory
 import id.maskology.ui.main.adapter.BannerSlideAdapter
+import id.maskology.ui.main.adapter.ListNewProductAdapter
+import id.maskology.ui.main.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -25,12 +32,44 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var sliderHandler: Handler
     private lateinit var sliderRun: Runnable
     private lateinit var reSliderRun: Runnable
+    private lateinit var homeViewModel: HomeViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
+        setViewModel()
         setSliderBanner()
+        setNewProducts()
+    }
+
+    private fun setNewProducts() {
+        val listAdapter = ListNewProductAdapter()
+        binding.collapsedbar.headerHome.rvNewProduct.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            adapter = listAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter {
+                    listAdapter.retry()
+                }
+            )
+        }
+
+        binding.collapsedbar.headerHome.rvNewProduct.adapter = listAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                listAdapter.retry()
+            }
+        )
+
+        homeViewModel.listProduct.observe(viewLifecycleOwner){ listNewProduct ->
+            listAdapter.submitData(lifecycle, listNewProduct)
+        }
+
+    }
+
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(requireActivity().application)
+        homeViewModel = ViewModelProvider(requireActivity(), factory)[HomeViewModel::class.java]
     }
 
     private fun setSliderBanner() {

@@ -1,5 +1,6 @@
 package id.maskology.data
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -9,13 +10,14 @@ import id.maskology.data.local.MaskologyDatabase
 import id.maskology.data.local.ProductRemoteKeys
 import id.maskology.data.model.Product
 import id.maskology.data.remote.api.ApiService
+import retrofit2.HttpException
 
 @OptIn(ExperimentalPagingApi::class)
 class ProductRemoteMediator(
-    private val database: MaskologyDatabase,
+    private val productDatabase: MaskologyDatabase,
     private val apiService: ApiService
-) : RemoteMediator<Int, Product>() {
-
+): RemoteMediator<Int, Product>()
+{
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
     }
@@ -31,55 +33,60 @@ class ProductRemoteMediator(
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getRemoteKeyForFirstItem(state)
-                val prevKey = remoteKeys?.prevKey
-                    ?: return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
+                val prevKey = remoteKeys?.prevKey ?: return MediatorResult.Success(
+                    endOfPaginationReached = remoteKeys != null
+                )
                 prevKey
             }
             LoadType.APPEND -> {
                 val remoteKeys = getRemoteKeyForLastItem(state)
-                val nextKey = remoteKeys?.nextKey
-                    ?: return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
+                val nextKey = remoteKeys?.nextKey ?: return MediatorResult.Success(
+                    endOfPaginationReached = remoteKeys != null
+                )
                 nextKey
             }
         }
-        try {
+        return try {
             val responseData = apiService.getAllProduct(page, state.config.pageSize)
             val endOfPaginationReached = responseData.listProduct.isEmpty()
-            database.withTransaction {
+
+            productDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    database.productRemoteKeysDao().deleteProductRemoteKeys()
-                    database.productDao().deleteAllProduct()
+                    productDatabase.productRemoteKeysDao().deleteProductRemoteKeys()
+                    productDatabase.productDao().deleteAllProduct()
                 }
-                val prevKey = if (page == 1) null else page - 1
+                val prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = responseData.listProduct.map {
                     ProductRemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
-                database.productRemoteKeysDao().insertAllProductRemoteKeys(keys)
-                database.productDao().insertProduct(responseData.listProduct)
+                productDatabase.productRemoteKeysDao().insertAllProductRemoteKeys(keys)
+                productDatabase.productDao().insertProduct(responseData.listProduct)
             }
-            return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
-        } catch (exception: Exception) {
-            return MediatorResult.Error(exception)
+            MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+        } catch (e: Exception) {
+            MediatorResult.Error(e)
+        } catch (e: HttpException) {
+            MediatorResult.Error(e)
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Product>): ProductRemoteKeys? {
-        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { data ->
-            database.productRemoteKeysDao().getProductRemoteKeysId(data.id)
-        }
-    }
-
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Product>): ProductRemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Product>) : ProductRemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { data ->
-            database.productRemoteKeysDao().getProductRemoteKeysId(data.id)
+            productDatabase.productRemoteKeysDao().getProductRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, Product>): ProductRemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Product>) : ProductRemoteKeys? {
+        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { data ->
+            productDatabase.productRemoteKeysDao().getProductRemoteKeysId(data.id)
+        }
+    }
+
+    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, Product>) : ProductRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
-                database.productRemoteKeysDao().getProductRemoteKeysId(id)
+                productDatabase.productRemoteKeysDao().getProductRemoteKeysId(id)
             }
         }
     }

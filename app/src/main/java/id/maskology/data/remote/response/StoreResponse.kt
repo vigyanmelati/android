@@ -5,6 +5,6 @@ import id.maskology.data.model.Category
 import id.maskology.data.model.Store
 
 data class StoreResponse(
-    @field:SerializedName("listStore")
+    @field:SerializedName("data")
     val listStore: List<Store>
 )

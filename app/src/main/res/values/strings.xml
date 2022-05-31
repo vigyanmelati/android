@@ -42,4 +42,7 @@
     <string name="title_related_products">Related Products</string>
     <string name="name_user">Name User</string>
     <string name="sign_out">Sign Out</string>
+    <string name="request_timeout">Request Timeout</string>
+    <string name="retry">Retry</string>
+    <string name="no_connection_message">Connection Failed, please check your internet connection</string>
 </resources>

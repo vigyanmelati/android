@@ -9,8 +9,15 @@ import id.maskology.data.model.Product
 import id.maskology.data.model.Store
 
 @Database(
-    entities = [Category::class, Store::class, Product::class, StoreRemoteKeys::class, ProductRemoteKeys::class, CategoryRemoteKeys::class ],
-    version = 2,
+    entities = [
+        Category::class,
+        Store::class,
+        Product::class,
+        StoreRemoteKeys::class,
+        ProductRemoteKeys::class,
+        CategoryRemoteKeys::class
+    ],
+    version = 1,
     exportSchema = false
 )
 abstract class MaskologyDatabase : RoomDatabase() {
@@ -19,6 +26,8 @@ abstract class MaskologyDatabase : RoomDatabase() {
     abstract fun storeDao(): StoreDao
     abstract fun productDao(): ProductDao
     abstract fun productRemoteKeysDao(): ProductRemoteKeysDao
+    abstract fun storeRemoteKeysDao(): StoreRemoteKeysDao
+    abstract fun categoryRemoteKeysDao(): CategoryRemoteKeysDao
 
     companion object {
         @Volatile

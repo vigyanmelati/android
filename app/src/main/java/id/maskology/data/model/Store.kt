@@ -26,6 +26,12 @@ data class Store(
     @field:SerializedName("email")
     val email: String,
 
+    @field:SerializedName("profilePictureUrl")
+    val profilePictureUrl: String,
+
+    @field:SerializedName("backgroundUrl")
+    val backgroundPictureUrl: String,
+
     @field:SerializedName("createdAt")
     val createdAt: String,
 

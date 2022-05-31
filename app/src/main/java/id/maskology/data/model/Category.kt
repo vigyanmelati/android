@@ -17,8 +17,14 @@ data class Category(
     @field:SerializedName("name")
     val name: String,
 
-    @field:SerializedName("photoUrl")
+    @field:SerializedName("imageUrl")
     val photoUrl: String,
+
+    @field:SerializedName("author")
+    val author: String,
+
+    @field:SerializedName("source")
+    val source: String,
 
     @field:SerializedName("detail")
     val detail: String,

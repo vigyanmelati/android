@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/ic_cameraswitch.xml" value="0.1205" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/drawable/ic_folder.xml" value="0.1205" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_camera.xml" value="0.16666666666666666" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_detail_ecommerce.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/collapsebar_detail_ecommerce.xml" value="0.13405797101449277" />
@@ -52,7 +55,6 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_banner.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_category.xml" value="0.5" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_large_product.xml" value="0.3625" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_loading.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_mask_story.xml" value="0.3625" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_news.xml" value="0.5" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/layout/item_product.xml" value="0.3625" />

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_store"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/dummy_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_store_name"
+        style="@style/TextStyle.Title"
+        android:layout_width="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:text="@string/store_name"
+        app:layout_constraintEnd_toEndOf="@+id/btn_contact"
+        app:layout_constraintStart_toEndOf="@+id/img_store"
+        app:layout_constraintTop_toTopOf="@+id/img_store" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_phone_number"
+        style="@style/TextStyle.Description"
+        android:layout_width="0dp"
+        android:maxLines="1"
+        android:text="@string/dummy_phone_number"
+        app:layout_constraintEnd_toEndOf="@+id/btn_contact"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_store_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_name" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_contact"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/cantact_store"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextStyle.SubTitle"
+        app:cornerRadius="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_store" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_error_message"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/request_timeout"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_contact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progresbar"
+        style="@style/Widget.AppCompat.ProgressBar.Content"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_contact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

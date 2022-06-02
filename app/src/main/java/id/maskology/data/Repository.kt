@@ -1,16 +1,16 @@
 package id.maskology.data
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.paging.*
 import id.maskology.data.local.MaskologyDatabase
-import id.maskology.data.local.ProductRemoteKeys
+import id.maskology.data.model.Category
 import id.maskology.data.model.Product
-import id.maskology.data.remote.api.ApiConfig
+import id.maskology.data.model.Store
 import id.maskology.data.remote.api.ApiService
-import id.maskology.data.remote.response.ProductResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class Repository(
     private val apiService: ApiService,
@@ -26,6 +26,33 @@ class Repository(
                 maskologyDatabase.productDao().getAllProduct()
             }
         ).flow
+    }
+
+    fun getAllCategory(): Flow<PagingData<Category>> {
+        @OptIn(ExperimentalPagingApi::class)
+        return Pager(
+            config = PagingConfig(pageSize = 5),
+            remoteMediator = CategoryRemoteMediator(maskologyDatabase, apiService),
+            pagingSourceFactory = {
+                maskologyDatabase.categoryDao().getAllCategory()
+            }
+        ).flow
+    }
+
+    fun getStore(id: String): Flow<Result<Store>>{
+        return flow {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getStore(id)
+                maskologyDatabase.storeDao().insertOneStore(response)
+                Log.d(TAG, "Get Store: ${response.id}")
+            }catch (e: Exception) {
+                emit(Result.Error("Store Not Found"))
+                Log.e(TAG, "Get Store: ${e.message.toString()}")
+            }
+            val store = maskologyDatabase.storeDao().getStore(id)
+            Result.Success(store)
+        }.flowOn(Dispatchers.IO)
     }
 
 

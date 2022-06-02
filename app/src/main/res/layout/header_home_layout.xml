@@ -34,8 +34,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_new_product"
         android:layout_width="match_parent"
-        android:layout_height="174dp"
+        android:layout_height="196dp"
         android:paddingHorizontal="8dp"
+        android:clipToPadding="false"
         tools:listitem="@layout/item_small_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

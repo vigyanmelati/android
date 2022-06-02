@@ -12,13 +12,13 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("category")
+    @GET("categories")
     suspend fun getAllCategory(
         @Query("page") page: Int,
         @Query("limit") size: Int
     ) : CategoryResponse
 
-    @GET("store")
+    @GET("stores")
     suspend fun getAllStore(
         @Query("page") page: Int,
         @Query("limit") size: Int
@@ -30,17 +30,17 @@ interface ApiService {
         @Query("limit") size: Int
     ) : ProductResponse
 
-    @GET("category/{id}")
+    @GET("categories/{id}")
     suspend fun getCategory(
         @Path("id") id: String
     ) : Category
 
-    @GET("product/{id}")
+    @GET("products/{id}")
     suspend fun getProduct(
         @Path("id") id: String
     ) : Product
 
-    @GET("store/{id}")
+    @GET("stores/{id}")
     suspend fun getStore(
         @Path("id") id: String
     ) : Store

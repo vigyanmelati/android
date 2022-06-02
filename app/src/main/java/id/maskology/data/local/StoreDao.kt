@@ -12,8 +12,14 @@ interface StoreDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStore(store: List<Store>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOneStore(store: Store)
+
     @Query("SELECT * FROM store")
     fun getAllStore(): PagingSource<Int, Store>
+
+    @Query("SELECT * FROM store WHERE id=:id")
+    fun getStore(id: String): Store
 
     @Query("DELETE FROM store")
     suspend fun deleteAllStore()

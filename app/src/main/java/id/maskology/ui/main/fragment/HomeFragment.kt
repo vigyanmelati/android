@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.LinearLayout.HORIZONTAL
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import id.maskology.R
@@ -21,7 +21,9 @@ import id.maskology.data.model.Banner
 import id.maskology.ui.LoadingStateAdapter
 import id.maskology.ui.ViewModelFactory
 import id.maskology.ui.main.adapter.BannerSlideAdapter
+import id.maskology.ui.main.adapter.ListCategoryAdapter
 import id.maskology.ui.main.adapter.ListNewProductAdapter
+import id.maskology.ui.main.adapter.ListProductAdapter
 import id.maskology.ui.main.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -40,10 +42,58 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         _binding = FragmentHomeBinding.bind(view)
         setViewModel()
         setSliderBanner()
-        setNewProducts()
+        setListNewProducts()
+        setListCategory()
+        setListProduct()
     }
 
-    private fun setNewProducts() {
+    private fun setListProduct() {
+        val listAdapter = ListProductAdapter()
+        binding.rvProduct.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            setHasFixedSize(true)
+            adapter = listAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter {
+                    listAdapter.retry()
+                }
+            )
+        }
+
+        binding.rvProduct.adapter = listAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                listAdapter.retry()
+            }
+        )
+
+        homeViewModel.listProduct.observe(viewLifecycleOwner){ listProduct->
+            listAdapter.submitData(lifecycle, listProduct)
+        }
+    }
+
+    private fun setListCategory() {
+        val listAdapter = ListCategoryAdapter()
+        binding.collapsedbar.rvCategory.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            adapter = listAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter {
+                    listAdapter.retry()
+                }
+            )
+        }
+
+        binding.collapsedbar.rvCategory.adapter = listAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                listAdapter.retry()
+            }
+        )
+
+        homeViewModel.listCategory.observe(viewLifecycleOwner){ listCategory ->
+            listAdapter.submitData(lifecycle, listCategory)
+        }
+    }
+
+    private fun setListNewProducts() {
         val listAdapter = ListNewProductAdapter()
         binding.collapsedbar.headerHome.rvNewProduct.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -133,14 +183,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             if (i == index) {
                 imageView.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireActivity().applicationContext,
+                        requireContext(),
                         R.drawable.ic_indicator_active
                     )
                 )
             } else {
                 imageView.setImageDrawable(
                     ContextCompat.getDrawable(
-                        requireActivity().applicationContext,
+                        requireContext(),
                         R.drawable.ic_indicator_inactive
                     )
                 )
@@ -151,6 +201,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onPause() {
         super.onPause()
         sliderHandler.removeCallbacks(sliderRun)
+        sliderHandler.removeCallbacks(reSliderRun)
     }
 
     override fun onResume() {

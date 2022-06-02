@@ -15,22 +15,22 @@ import id.maskology.ui.camera.CameraActivity
 import id.maskology.ui.detailEcommerce.DetailEcommerceActivity
 import id.maskology.ui.detailProduct.DetailProductActivity
 import id.maskology.ui.main.fragment.EducationFragment
+import id.maskology.ui.main.fragment.FavoriteFragment
 import id.maskology.ui.main.fragment.HomeFragment
 import id.maskology.ui.main.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val homeFragment = HomeFragment()
+    private val educationFragment = EducationFragment()
+    private val profileFragment = ProfileFragment()
+    private val favoriteFragment = FavoriteFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val homeFragment = HomeFragment()
-        val educationFragment = EducationFragment()
-        val profileFragment = ProfileFragment()
-
-        setFragment(homeFragment)
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
@@ -40,11 +40,13 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        setFragment(homeFragment)
+
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId){
                 R.id.nav_home -> setFragment(homeFragment)
                 R.id.nav_education -> setFragment(educationFragment)
-                R.id.nav_favorite -> testActivity()
+                R.id.nav_favorite -> setFragment(favoriteFragment)
                 R.id.nav_profile -> setFragment(profileFragment)
             }
             true
@@ -87,6 +89,16 @@ class MainActivity : AppCompatActivity() {
     }
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onResume() {
+        super.onResume()
+        when (binding.bottomNavigation.selectedItemId){
+            R.id.nav_home -> setFragment(homeFragment)
+            R.id.nav_education -> setFragment(educationFragment)
+            R.id.nav_favorite -> setFragment(favoriteFragment)
+            R.id.nav_profile -> setFragment(profileFragment)
+        }
     }
 
 

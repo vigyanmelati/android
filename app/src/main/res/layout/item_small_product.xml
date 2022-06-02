@@ -5,10 +5,10 @@
     android:id="@+id/card_small_product"
     style="@style/CardViewSmallProduct"
     app:cardElevation="8dp">
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="175dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_product"
@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:text="@string/product_name"
             android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="@+id/img_product"
             app:layout_constraintStart_toStartOf="@+id/img_product"
             app:layout_constraintTop_toBottomOf="@+id/img_product" />
@@ -53,15 +54,15 @@
             style="@style/TextStyle.Description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:maxLines="2"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
             android:text="@string/store_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/img_product"
-            app:layout_constraintStart_toStartOf="@+id/img_product"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_product_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />
 
-        
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

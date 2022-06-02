@@ -1,7 +1,11 @@
 package id.maskology.ui.main.adapter
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +14,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.maskology.R
 import id.maskology.data.model.Product
 import id.maskology.databinding.ItemSmallProductBinding
+import id.maskology.ui.detailProduct.DetailProductActivity
 import id.maskology.utils.CurrencyFormatter
 
 class ListNewProductAdapter :
@@ -44,6 +49,18 @@ class ListNewProductAdapter :
                 tvProductName.text = newProduct.name
                 tvProductPrice.text = CurrencyFormatter.rupiahFormatter(Integer.valueOf(newProduct.price))
                 tvStoreName.text = "Maskology"
+
+                root.setOnClickListener {
+                    val intent = Intent(itemView.context, DetailProductActivity::class.java)
+                    intent.putExtra("product", newProduct)
+
+                    val optionsCompat: ActivityOptionsCompat =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            itemView.context as Activity,
+                            Pair(imgProduct, "img_product")
+                        )
+                    itemView.context.startActivity(intent, optionsCompat.toBundle())
+                }
             }
         }
     }

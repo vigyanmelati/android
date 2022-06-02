@@ -1,6 +1,5 @@
 package id.maskology.data
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -47,8 +46,8 @@ class ProductRemoteMediator(
             }
         }
         return try {
-            val responseData = apiService.getAllProduct(page, state.config.pageSize)
-            val endOfPaginationReached = responseData.listProduct.isEmpty()
+            val productResponseData = apiService.getAllProduct(page, state.config.pageSize)
+            val endOfPaginationReached = productResponseData.listProduct.isEmpty()
 
             productDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
@@ -57,11 +56,12 @@ class ProductRemoteMediator(
                 }
                 val prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
-                val keys = responseData.listProduct.map {
+                val keys = productResponseData.listProduct.map {
                     ProductRemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
+
                 productDatabase.productRemoteKeysDao().insertAllProductRemoteKeys(keys)
-                productDatabase.productDao().insertProduct(responseData.listProduct)
+                productDatabase.productDao().insertProduct(productResponseData.listProduct)
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (e: Exception) {

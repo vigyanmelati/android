@@ -67,6 +67,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="TextStyle.TitleToolbar">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/cream</item>
+    </style>
+
     <style name="TextStyle.SubTitle">
         <item name="android:fontFamily">@font/noto_sans_medium</item>
         <item name="android:textSize">12sp</item>
@@ -119,7 +125,7 @@
     </style>
 
     <style name="CardViewLargeProduct">
-        <item name="android:layout_width">156.69dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginEnd">8dp</item>
@@ -151,8 +157,8 @@
     <style name="CardCategory">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="cardCornerRadius">4dp</item>
@@ -194,6 +200,18 @@
     </style>
 
     <style name="CustomCollapesebarHome">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="CustomAppbarEducation">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="CustomCollapesebarEducation">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">?attr/colorSurface</item>

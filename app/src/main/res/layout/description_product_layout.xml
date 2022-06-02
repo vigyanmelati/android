@@ -7,6 +7,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_price"
+        android:transitionName="price"
         style="@style/TextStyle.LargePrice"
         android:layout_width="0dp"
         android:text="@string/dummy_price"
@@ -57,46 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_description"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_store"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/dummy_2"
-        app:layout_constraintStart_toStartOf="@+id/tv_title_Store"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_Store" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_store_name"
-        style="@style/TextStyle.Title"
-        android:layout_width="0dp"
-        android:layout_marginStart="16dp"
-        android:maxLines="1"
-        android:text="@string/store_name"
-        app:layout_constraintEnd_toEndOf="@+id/tv_title_Store"
-        app:layout_constraintStart_toEndOf="@+id/img_store"
-        app:layout_constraintTop_toTopOf="@+id/img_store" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_adrress"
-        style="@style/TextStyle.SubTitle"
-        android:layout_width="0dp"
-        android:maxLines="1"
-        android:text="@string/address_ecommerce"
-        app:layout_constraintEnd_toEndOf="@+id/tv_store_name"
-        app:layout_constraintStart_toStartOf="@+id/tv_store_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_store_name" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_phone_number"
-        style="@style/TextStyle.Description"
-        android:layout_width="0dp"
-        android:maxLines="1"
-        android:text="@string/dummy_phone_number"
-        app:layout_constraintEnd_toEndOf="@+id/tv_adrress"
-        app:layout_constraintStart_toStartOf="@+id/tv_adrress"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adrress" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title_Store"
         style="@style/TextStyle.SubHeader"
@@ -108,18 +69,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_contact"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
-        android:text="@string/cantact_store"
-        android:textAppearance="@style/TextStyle.SubTitle"
-        app:cornerRadius="4dp"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_phone_number" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title_Store">
+
+        <include
+            android:id="@+id/mini_profile_layout"
+            layout="@layout/mini_store_profile_layout" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

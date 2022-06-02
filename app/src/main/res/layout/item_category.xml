@@ -6,6 +6,7 @@
     app:cardElevation="8dp">
 
     <TextView
+        android:id="@+id/tv_category"
         style="@style/TextStyleCategory"
         android:text="@string/category"
         android:maxLines="1"/>

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_product"
+            android:id="@+id/img_news"
             android:layout_width="match_parent"
             android:layout_height="96.21dp"
             android:layout_margin="8dp"
@@ -24,7 +24,7 @@
 
         <LinearLayout
             style="@style/BackgroundTextView"
-            app:layout_constraintBottom_toBottomOf="@+id/img_product"
+            app:layout_constraintBottom_toBottomOf="@+id/img_news"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -34,7 +34,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="12dp"
-                android:text="@string/title_news"/>
+                android:text="@string/title_news"
+                android:maxWidth="130dp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -45,10 +48,11 @@
             android:layout_marginBottom="8dp"
             android:maxLines="2"
             android:text="@string/news_content"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/img_product"
-            app:layout_constraintStart_toStartOf="@+id/img_product"
-            app:layout_constraintTop_toBottomOf="@+id/img_product" />
+            app:layout_constraintEnd_toEndOf="@+id/img_news"
+            app:layout_constraintStart_toStartOf="@+id/img_news"
+            app:layout_constraintTop_toBottomOf="@+id/img_news" />
 
         
     </androidx.constraintlayout.widget.ConstraintLayout>

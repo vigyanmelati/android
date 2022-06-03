@@ -13,6 +13,7 @@ import androidx.core.util.Pair
 import id.maskology.R
 import id.maskology.databinding.ActivitySplashscreenBinding
 import id.maskology.ui.main.MainActivity
+import id.maskology.ui.onboarding.OnBoardingActivity
 import kotlin.system.exitProcess
 
 class SplashscreenActivity : AppCompatActivity() {
@@ -47,7 +48,7 @@ class SplashscreenActivity : AppCompatActivity() {
     }
 
     private fun toNextActivity() {
-        startActivity(Intent(this@SplashscreenActivity, MainActivity::class.java))
+        startActivity(Intent(this@SplashscreenActivity, OnBoardingActivity::class.java))
         finish()
     }
 

@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import id.maskology.R
 import id.maskology.databinding.FragmentProfileBinding
-import id.maskology.ui.login.LoginActivity
+import id.maskology.ui.onboarding.OnBoardingActivity
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -31,7 +31,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
             // Not signed in, launch the Login activity
-            startActivity(Intent(activity, LoginActivity::class.java))
+            startActivity(Intent(activity, OnBoardingActivity::class.java))
             return
         }
         firebaseUser.let {
@@ -62,7 +62,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun signOut() {
         auth.signOut()
-        startActivity(Intent(activity, LoginActivity::class.java))
+        startActivity(Intent(activity, OnBoardingActivity::class.java))
     }
 
 }

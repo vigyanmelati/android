@@ -17,7 +17,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_fun_fact"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="166dp"
         android:paddingHorizontal="8dp"
         android:clipToPadding="false"
         tools:listitem="@layout/item_news"

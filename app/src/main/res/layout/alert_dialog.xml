@@ -25,14 +25,16 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+            style="@style/ButtonSolid"
             android:id="@+id/btn_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yes"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_no"
+            style="@style/ButtonSolid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cancel"

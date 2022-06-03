@@ -1,4 +1,4 @@
-package id.maskology.ui.login
+package id.maskology.ui.onboarding
 
 import android.app.Activity
 import android.content.Intent
@@ -16,18 +16,19 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import id.maskology.R
-import id.maskology.databinding.ActivityLoginBinding
+import id.maskology.databinding.ActivityOnBoardingBinding
 import id.maskology.ui.main.MainActivity
 
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+class OnBoardingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOnBoardingBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions
@@ -41,11 +42,11 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             signIn()
         }
-
     }
 
+
     private fun signIn() {
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
         finish()
 //        val signInIntent = googleSignInClient.signInIntent
 //        resultLauncher.launch(signInIntent)
@@ -84,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
             finish()
         }
     }

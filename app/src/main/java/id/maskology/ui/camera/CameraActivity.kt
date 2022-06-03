@@ -4,14 +4,21 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -19,13 +26,21 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import id.maskology.R
+import id.maskology.data.remote.api.ApiConfig
+import id.maskology.data.remote.response.PredictResponse
 import id.maskology.databinding.ActivityCameraBinding
 import id.maskology.ui.main.MainActivity
+import id.maskology.ui.maskStory.MaskStoryActivity
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.OutputStream
-import java.nio.file.Files.createFile
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -53,7 +68,7 @@ class CameraActivity : AppCompatActivity() {
                 startCamera()
             }
             btnGalery.setOnClickListener {
-                startGallery()
+//                startGallery()
             }
         }
     }
@@ -68,6 +83,8 @@ class CameraActivity : AppCompatActivity() {
         super.onDestroy()
         cameraExecutor.shutdown()
     }
+    private var result : Bitmap?  = null
+    private var getFile: File? = null
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
@@ -89,14 +106,20 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val intent = Intent()
-                    intent.putExtra("picture", photoFile)
-                    intent.putExtra(
-                        "isBackCamera",
-                        cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
+//                    val intent = Intent()
+//                    intent.putExtra("picture", photoFile)
+//                    intent.putExtra(
+//                        "isBackCamera",
+//                        cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
+//                    )
+//                    setResult(MainActivity.CAMERA_X_RESULT, intent)
+                    val isBackCamera = cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
+                    getFile = photoFile
+                    result = rotateBitmap(
+                        BitmapFactory.decodeFile(photoFile.path),
+                        isBackCamera
                     )
-                    setResult(MainActivity.CAMERA_X_RESULT, intent)
-                    finish()
+                    DialogForm()
                 }
             }
         )
@@ -150,22 +173,102 @@ class CameraActivity : AppCompatActivity() {
         return myFile
     }
 
-    private val launcherIntentGallery = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val selectedImg: Uri = result.data?.data as Uri
-            val myFile = uriToFile(selectedImg, this)
-//            binding.previewImageView.setImageURI(selectedImg)
+//    private val launcherIntentGallery = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()
+//    ) { result ->
+//        if (result.resultCode == RESULT_OK) {
+//            val selectedImg: Uri = result.data?.data as Uri
+//            val myFile = uriToFile(selectedImg, this)
+////            binding.previewImageView.setImageURI(selectedImg)
+//        }
+//    }
+//
+//    private fun startGallery() {
+//        val intent = Intent()
+//        intent.action = ACTION_GET_CONTENT
+//        intent.type = "image/*"
+//        val chooser = Intent.createChooser(intent, "Choose a Picture")
+//        launcherIntentGallery.launch(chooser)
+//        val selectedImg: Uri = result.data?.data as Uri
+//        val myFile = uriToFile(selectedImg, this)
+//    }
+
+    private fun uploadImage() {
+        if (getFile != null) {
+            val file = reduceFileImage(getFile as File)
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "image",
+                file.name,
+                requestImageFile
+            )
+
+            val service =
+                ApiConfig.getApiService().predict(imageMultipart)
+            service.enqueue(object : Callback<PredictResponse> {
+                override fun onResponse(
+                    call: Call<PredictResponse>,
+                    response: Response<PredictResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        responseBody?.result?.forEach { resultItem ->
+                            if (resultItem.value == 1) {
+                                val bundle = Bundle()
+                                bundle.putString("category", resultItem.label)
+                                val intent =
+                                    Intent(this@CameraActivity, MaskStoryActivity::class.java)
+                                intent.putExtras(bundle)
+                                startActivity(intent)
+                            }else{
+                                Toast.makeText(this@CameraActivity,"Tidak Ada yang sesuai",Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    } else {
+                        Toast.makeText(
+                            this@CameraActivity,
+                            response.message(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
+                    Toast.makeText(
+                        this@CameraActivity,
+                        "Gagal instance Retrofit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            })
+        } else {
+            Toast.makeText(
+                this@CameraActivity,
+                "Silakan masukkan berkas gambar terlebih dahulu.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
-    private fun startGallery() {
-        val intent = Intent()
-        intent.action = ACTION_GET_CONTENT
-        intent.type = "image/*"
-        val chooser = Intent.createChooser(intent, "Choose a Picture")
-        launcherIntentGallery.launch(chooser)
+    private fun DialogForm() {
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.alert_dialog, null)
+        val Yesbutton = view.findViewById<Button>(R.id.btn_yes)
+        val Nobutton = view.findViewById<Button>(R.id.btn_no)
+        val img = view.findViewById<ImageView>(R.id.imageCapture)
+        img.setImageBitmap(result)
+        builder.setView(view)
+        Nobutton.setOnClickListener {
+            builder.dismiss()
+        }
+        Yesbutton.setOnClickListener {
+            uploadImage()
+        }
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
     }
 
     private fun hideSystemUI() {
@@ -180,4 +283,6 @@ class CameraActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
+
+
 }

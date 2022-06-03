@@ -4,11 +4,12 @@ import id.maskology.data.model.Category
 import id.maskology.data.model.Product
 import id.maskology.data.model.Store
 import id.maskology.data.remote.response.CategoryResponse
+import id.maskology.data.remote.response.PredictResponse
 import id.maskology.data.remote.response.ProductResponse
 import id.maskology.data.remote.response.StoreResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import retrofit2.Call
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -44,4 +45,10 @@ interface ApiService {
     suspend fun getStore(
         @Path("id") id: String
     ) : Store
+
+    @Multipart
+    @POST("predict")
+    fun predict(
+        @Part image: MultipartBody.Part
+    ) : Call<PredictResponse>
 }

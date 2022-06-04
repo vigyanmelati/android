@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1095160753627-lfjcu5oplfjtfv2a76e3g53ng2654icj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.maskology",
+            "certificate_hash": "c7054ce6cc2015ed170c850a02b3f0051ebdac5a"
+          }
+        },
+        {
           "client_id": "1095160753627-ta60s7guhaekl4r3kn4r0pd7jir0iph9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -86,6 +86,5 @@ class MaskStoryActivity : AppCompatActivity() {
 
     private fun getDataCategory() {
         category = intent.getParcelableExtra<Category>("category") as Category
-//        category = intent.getStringExtra("category") as Category
     }
 }

@@ -32,13 +32,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (!allPermissionsGranted()) {
-            ActivityCompat.requestPermissions(
-                this,
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
-            )
-        }
+//        if (!allPermissionsGranted()) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                REQUIRED_PERMISSIONS,
+//                REQUEST_CODE_PERMISSIONS
+//            )
+//        }
 
         setFragment(homeFragment)
 
@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, DetailEcommerceActivity::class.java))
     }
 
+
     private fun toCameraActivity() {
         startActivity(Intent(this@MainActivity, CameraActivity::class.java))
     }
@@ -70,26 +71,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (!allPermissionsGranted()) {
-                Toast.makeText(
-                    this,
-                    "Tidak mendapatkan permission.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                finish()
-            }
-        }
-    }
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<String>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+//            if (!allPermissionsGranted()) {
+//                Toast.makeText(
+//                    this,
+//                    "Tidak mendapatkan permission.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                finish()
+//            }
+//        }
+//    }
+//    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+//        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+//    }
 
     override fun onResume() {
         super.onResume()

@@ -298,11 +298,11 @@ class CameraActivity : AppCompatActivity() {
         }
         Yesbutton.setOnClickListener {
             builder.dismiss()
-            binding.layoutToolCamera.apply {
-                btnShutter.isEnabled = false
-                btnFlipCamera.isEnabled = false
-                btnGalery.isEnabled = false
-            }
+//            binding.layoutToolCamera.apply {
+//                btnShutter.isEnabled = false
+//                btnFlipCamera.isEnabled = false
+//                btnGalery.isEnabled = false
+//            }
             uploadImage()
         }
         builder.setCanceledOnTouchOutside(false)

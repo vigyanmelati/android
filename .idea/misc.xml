@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_camera.xml" value="0.14666666666666667" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_detail_ecommerce.xml" value="0.1" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_detail_product.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/activity_mask_story.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/collapsebar_detail_ecommerce.xml" value="0.13405797101449277" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/description_product_layout.xml" value="0.1" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_education.xml" value="0.13405797101449277" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_home.xml" value="0.13405797101449277" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/fragment_profile.xml" value="0.16666666666666666" />
         <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/header_detail_ecommerce_layout.xml" value="0.13405797101449277" />
+        <entry key="..\:/Tugas Kuliah Semester 6 (Bangkit)/android/app/src/main/res/layout/mini_store_profile_layout.xml" value="0.12590579710144928" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/background_glass_fx.xml" value="0.244" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/background_glass_fx_small.xml" value="0.244" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Maskology/app/src/main/res/drawable/ic_baseline_arrow_back.xml" value="0.195" />

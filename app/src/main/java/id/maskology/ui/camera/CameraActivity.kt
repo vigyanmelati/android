@@ -11,7 +11,6 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -32,7 +31,6 @@ import id.maskology.R
 import id.maskology.data.remote.api.ApiConfig
 import id.maskology.data.remote.response.PredictResponse
 import id.maskology.databinding.ActivityCameraBinding
-import id.maskology.ui.main.MainActivity
 import id.maskology.ui.maskStory.MaskStoryActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -46,6 +44,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
@@ -79,7 +78,7 @@ class CameraActivity : AppCompatActivity() {
                 startCamera()
             }
             btnGalery.setOnClickListener {
-//                startGallery()
+                startGallery()
             }
         }
     }
@@ -101,6 +100,7 @@ class CameraActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
@@ -116,7 +116,8 @@ class CameraActivity : AppCompatActivity() {
         super.onDestroy()
         cameraExecutor.shutdown()
     }
-    private var result : Bitmap?  = null
+
+    private var result_img: Bitmap? = null
     private var getFile: File? = null
 
     private fun takePhoto() {
@@ -139,16 +140,9 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-//                    val intent = Intent()
-//                    intent.putExtra("picture", photoFile)
-//                    intent.putExtra(
-//                        "isBackCamera",
-//                        cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
-//                    )
-//                    setResult(MainActivity.CAMERA_X_RESULT, intent)
                     val isBackCamera = cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
                     getFile = photoFile
-                    result = rotateBitmap(
+                    result_img = rotateBitmap(
                         BitmapFactory.decodeFile(photoFile.path),
                         isBackCamera
                     )
@@ -206,27 +200,34 @@ class CameraActivity : AppCompatActivity() {
         return myFile
     }
 
-//    private val launcherIntentGallery = registerForActivityResult(
-//        ActivityResultContracts.StartActivityForResult()
-//    ) { result ->
-//        if (result.resultCode == RESULT_OK) {
-//            val selectedImg: Uri = result.data?.data as Uri
-//            val myFile = uriToFile(selectedImg, this)
-////            binding.previewImageView.setImageURI(selectedImg)
-//        }
-//    }
-//
-//    private fun startGallery() {
-//        val intent = Intent()
-//        intent.action = ACTION_GET_CONTENT
-//        intent.type = "image/*"
-//        val chooser = Intent.createChooser(intent, "Choose a Picture")
-//        launcherIntentGallery.launch(chooser)
-//        val selectedImg: Uri = result.data?.data as Uri
-//        val myFile = uriToFile(selectedImg, this)
-//    }
+    fun FiletoBitmap(img : File): Bitmap{
+        val filePath: String = img.getPath()
+        val bitmap = BitmapFactory.decodeFile(filePath)
+        return bitmap
+    }
+
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+            val myFile = uriToFile(selectedImg, this)
+            getFile = myFile
+            result_img = FiletoBitmap(myFile)
+            DialogForm()
+        }
+    }
 
     private fun uploadImage() {
+        showLoading(true)
         if (getFile != null) {
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -244,26 +245,21 @@ class CameraActivity : AppCompatActivity() {
                     response: Response<PredictResponse>
                 ) {
                     if (response.isSuccessful) {
-                        val responseBody = response.body()
-                        responseBody?.result?.forEach { resultItem ->
-                            if (resultItem.value == 1) {
-                                val bundle = Bundle()
-                                bundle.putString("category", resultItem.label)
-                                val intent =
-                                    Intent(this@CameraActivity, MaskStoryActivity::class.java)
-                                intent.putExtras(bundle)
-                                startActivity(intent)
-                            }else{
-                                Toast.makeText(this@CameraActivity,"Tidak Ada yang sesuai",Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
+                        val responseBody = response.body()?.result
+                        val bundle = Bundle()
+                        bundle.putParcelable("category", responseBody)
+                        val intent =
+                            Intent(this@CameraActivity, MaskStoryActivity::class.java)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
+                        showLoading(false)
                     } else {
                         Toast.makeText(
                             this@CameraActivity,
                             response.message(),
                             Toast.LENGTH_SHORT
                         ).show()
+                        showLoading(false)
                     }
                 }
 
@@ -273,6 +269,7 @@ class CameraActivity : AppCompatActivity() {
                         "Gagal instance Retrofit",
                         Toast.LENGTH_SHORT
                     ).show()
+                    showLoading(false)
                 }
 
             })
@@ -282,6 +279,7 @@ class CameraActivity : AppCompatActivity() {
                 "Silakan masukkan berkas gambar terlebih dahulu.",
                 Toast.LENGTH_SHORT
             ).show()
+            showLoading(false)
         }
     }
 
@@ -292,7 +290,7 @@ class CameraActivity : AppCompatActivity() {
         val Yesbutton = view.findViewById<Button>(R.id.btn_yes)
         val Nobutton = view.findViewById<Button>(R.id.btn_no)
         val img = view.findViewById<ImageView>(R.id.imageCapture)
-        img.setImageBitmap(result)
+        img.setImageBitmap(result_img)
         builder.setView(view)
         Nobutton.setOnClickListener {
             builder.dismiss()
@@ -315,6 +313,14 @@ class CameraActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progresbar.visibility = View.VISIBLE
+        } else {
+            binding.progresbar.visibility = View.GONE
+        }
     }
 
     companion object {

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -17,18 +18,21 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import id.maskology.R
 import id.maskology.databinding.ActivityOnBoardingBinding
+import id.maskology.ui.ViewModelFactory
 import id.maskology.ui.main.MainActivity
+import id.maskology.ui.onboarding.viewmodel.OnBoardingViewModel
 
 class OnBoardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+    private lateinit var onBoardingViewModel: OnBoardingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setViewModel()
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions
@@ -42,15 +46,38 @@ class OnBoardingActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             signIn()
         }
+        binding.btnLoginGuest.setOnClickListener {
+            signInAsGuest()
+        }
+    }
+
+    private fun autoSignInAsGuest() {
+        onBoardingViewModel.getEmailPreferences().observe(this@OnBoardingActivity){result ->
+            if (result != "") {
+                startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
+                finish()
+            }
+        }
+    }
+
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(this@OnBoardingActivity.application)
+        onBoardingViewModel = ViewModelProvider(this@OnBoardingActivity, factory)[OnBoardingViewModel::class.java]
+    }
+
+    private fun signInAsGuest() {
+        val email = "guest@gmail.com"
+        val name = "Guest User"
+        val imageUrl = "guest"
+        onBoardingViewModel.saveAuthPreferences(email, name, imageUrl)
     }
 
 
     private fun signIn() {
-        startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
-        finish()
-//        val signInIntent = googleSignInClient.signInIntent
-//        resultLauncher.launch(signInIntent)
+        val signInIntent = googleSignInClient.signInIntent
+        resultLauncher.launch(signInIntent)
     }
+
     private var resultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -95,6 +122,7 @@ class OnBoardingActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
+        autoSignInAsGuest()
     }
 
     companion object {

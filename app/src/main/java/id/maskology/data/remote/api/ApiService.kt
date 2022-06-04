@@ -3,10 +3,7 @@ package id.maskology.data.remote.api
 import id.maskology.data.model.Category
 import id.maskology.data.model.Product
 import id.maskology.data.model.Store
-import id.maskology.data.remote.response.CategoryResponse
-import id.maskology.data.remote.response.PredictResponse
-import id.maskology.data.remote.response.ProductResponse
-import id.maskology.data.remote.response.StoreResponse
+import id.maskology.data.remote.response.*
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -18,6 +15,12 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("limit") size: Int
     ) : CategoryResponse
+
+    @GET("categories")
+    suspend fun getAllCategoryProduct(
+        @Query("page") page: Int,
+        @Query("limit") size: Int
+    ) : CategoryProductResponse
 
     @GET("stores")
     suspend fun getAllStore(

@@ -5,8 +5,8 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import id.maskology.data.local.MaskologyDatabase
-import id.maskology.data.local.ProductRemoteKeys
+import id.maskology.data.local.database.MaskologyDatabase
+import id.maskology.data.local.database.ProductRemoteKeys
 import id.maskology.data.model.Product
 import id.maskology.data.remote.api.ApiService
 import retrofit2.HttpException

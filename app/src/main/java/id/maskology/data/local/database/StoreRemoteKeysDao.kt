@@ -1,4 +1,4 @@
-package id.maskology.data.local
+package id.maskology.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Insert

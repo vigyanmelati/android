@@ -1,6 +1,5 @@
 package id.maskology.ui.main.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -16,14 +15,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import id.maskology.R
+import id.maskology.data.Repository
+import id.maskology.data.Result
 import id.maskology.databinding.FragmentHomeBinding
 import id.maskology.data.model.Banner
+import id.maskology.data.model.CategoryProduct
 import id.maskology.ui.LoadingStateAdapter
 import id.maskology.ui.ViewModelFactory
-import id.maskology.ui.main.adapter.BannerSlideAdapter
-import id.maskology.ui.main.adapter.ListCategoryAdapter
-import id.maskology.ui.main.adapter.ListNewProductAdapter
-import id.maskology.ui.main.adapter.ListProductAdapter
+import id.maskology.ui.main.adapter.*
 import id.maskology.ui.main.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -43,7 +42,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setViewModel()
         setSliderBanner()
         setListNewProducts()
-        setListCategory()
+        getDataListCategory()
         setListProduct()
     }
 
@@ -70,26 +69,35 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setListCategory() {
-        val listAdapter = ListCategoryAdapter()
+    private fun getDataListCategory() {
+        homeViewModel.listCategoryProduct.observe(viewLifecycleOwner){ result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> {
+                        //do nothing
+                    }
+                    is Result.Success -> {
+                        val defaultListCategoryProduct = listOf(
+                            CategoryProduct("all", resources.getString(R.string.all_category))
+                        )
+                        val listCategoryProduct = defaultListCategoryProduct + result.data
+                        setListCategoryProduct(listCategoryProduct)
+                    }
+                    is Result.Error -> {
+                        //do nothing
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setListCategoryProduct(listCategoryProduct: List<CategoryProduct>) {
+        val listAdapter = ListCategoryProductAdapter(listCategoryProduct)
+
         binding.collapsedbar.rvCategory.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
-            adapter = listAdapter.withLoadStateFooter(
-                footer = LoadingStateAdapter {
-                    listAdapter.retry()
-                }
-            )
-        }
-
-        binding.collapsedbar.rvCategory.adapter = listAdapter.withLoadStateFooter(
-            footer = LoadingStateAdapter {
-                listAdapter.retry()
-            }
-        )
-
-        homeViewModel.listCategory.observe(viewLifecycleOwner){ listCategory ->
-            listAdapter.submitData(lifecycle, listCategory)
+            adapter = listAdapter
         }
     }
 

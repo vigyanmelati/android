@@ -1,16 +1,18 @@
-package id.maskology.data.local
+package id.maskology.data.local.database
 
 import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import id.maskology.data.model.Category
+import id.maskology.data.model.CategoryProduct
 import id.maskology.data.model.Product
 import id.maskology.data.model.Store
 
 @Database(
     entities = [
         Category::class,
+        CategoryProduct::class,
         Store::class,
         Product::class,
         StoreRemoteKeys::class,
@@ -23,6 +25,7 @@ import id.maskology.data.model.Store
 abstract class MaskologyDatabase : RoomDatabase() {
 
     abstract fun categoryDao(): CategoryDao
+    abstract fun categoryProductDao(): CategoryProductDao
     abstract fun storeDao(): StoreDao
     abstract fun productDao(): ProductDao
     abstract fun productRemoteKeysDao(): ProductRemoteKeysDao

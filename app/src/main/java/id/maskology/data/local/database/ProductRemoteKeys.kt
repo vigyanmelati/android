@@ -1,4 +1,4 @@
-package id.maskology.data.local
+package id.maskology.data.local.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

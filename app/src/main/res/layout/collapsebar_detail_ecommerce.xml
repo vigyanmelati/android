@@ -11,9 +11,9 @@
         android:layout_height="match_parent"
         app:title="@string/name_ecommerce"
         app:expandedTitleTextAppearance="@style/TransparentTextStyle"
-        app:collapsedTitleTextAppearance="@style/TextStyle.Header"
+        app:collapsedTitleTextAppearance="@style/TextStyle.TitleToolbar"
         app:titleCollapseMode="scale"
-        app:contentScrim="?attr/colorSurface"
+        app:contentScrim="@color/dark_green"
         app:expandedTitleMarginBottom="32dp"
         app:expandedTitleMarginStart="16dp"
         app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">

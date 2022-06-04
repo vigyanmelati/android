@@ -83,12 +83,17 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.5.0-alpha01'
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
 
+    // Data Store
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'androidx.test:core-ktx:1.4.0'
+
     //ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 
     //Auth
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
-    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.5'
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
     //test
     testImplementation 'junit:junit:4.13.2'

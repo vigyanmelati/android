@@ -10,21 +10,37 @@ import android.os.Looper
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import id.maskology.R
 import id.maskology.databinding.ActivitySplashscreenBinding
+import id.maskology.ui.ViewModelFactory
 import id.maskology.ui.main.MainActivity
 import id.maskology.ui.onboarding.OnBoardingActivity
+import id.maskology.ui.onboarding.viewmodel.OnBoardingViewModel
+import id.maskology.ui.splashscreen.viewmodel.SplashscreenViewModel
 import kotlin.system.exitProcess
 
 class SplashscreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashscreenBinding
     private val delay = 3000L
+    private lateinit var splashscreenViewModel: SplashscreenViewModel
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setViewModel()
+        auth = Firebase.auth
+    }
+
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(this@SplashscreenActivity.application)
+        splashscreenViewModel = ViewModelProvider(this@SplashscreenActivity, factory)[SplashscreenViewModel::class.java]
     }
 
     override fun onResume() {
@@ -48,8 +64,15 @@ class SplashscreenActivity : AppCompatActivity() {
     }
 
     private fun toNextActivity() {
-        startActivity(Intent(this@SplashscreenActivity, OnBoardingActivity::class.java))
-        finish()
+        splashscreenViewModel.getEmailPreferences().observe(this@SplashscreenActivity){currentUserEmail ->
+            if (auth.currentUser != null || currentUserEmail !=""){
+                startActivity(Intent(this@SplashscreenActivity, MainActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this@SplashscreenActivity, OnBoardingActivity::class.java))
+                finish()
+            }
+        }
     }
 
     override fun onBackPressed() {

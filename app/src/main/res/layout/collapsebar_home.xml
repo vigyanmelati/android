@@ -8,6 +8,7 @@
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/custom_collapsebar"
         style="@style/CustomCollapesebarHome"
+        app:contentScrim="?attr/colorSurface"
         app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
         app:titleEnabled="false">
 

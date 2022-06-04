@@ -18,6 +18,7 @@ import id.maskology.data.model.Product
 import id.maskology.data.model.Store
 import id.maskology.databinding.ActivityDetailProductBinding
 import id.maskology.ui.ViewModelFactory
+import id.maskology.ui.detailEcommerce.DetailEcommerceActivity
 import id.maskology.ui.detailProduct.viewmodel.DetailProductViewModel
 import id.maskology.ui.main.MainActivity
 import id.maskology.utils.CurrencyFormatter
@@ -48,6 +49,7 @@ class DetailProductActivity : AppCompatActivity() {
             tvStoreName.visibility = View.INVISIBLE
             tvPhoneNumber.visibility = View.INVISIBLE
             btnContact.visibility = View.INVISIBLE
+            tvErrorMessage.visibility = View.INVISIBLE
         }
     }
 
@@ -100,7 +102,7 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     private fun toProfileStore(store: Store) {
-        val intent = Intent(this@DetailProductActivity, DetailProductActivity::class.java)
+        val intent = Intent(this@DetailProductActivity, DetailEcommerceActivity::class.java)
         intent.putExtra("store", store)
         startActivity(intent)
     }

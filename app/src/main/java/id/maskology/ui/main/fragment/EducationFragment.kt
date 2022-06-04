@@ -2,23 +2,17 @@ package id.maskology.ui.main.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.maskology.R
-import id.maskology.data.model.Banner
 import id.maskology.data.model.FunFact
 import id.maskology.databinding.FragmentEducationBinding
-import id.maskology.databinding.FragmentHomeBinding
 import id.maskology.ui.LoadingStateAdapter
 import id.maskology.ui.ViewModelFactory
-import id.maskology.ui.main.adapter.ListCategoryAdapter
 import id.maskology.ui.main.adapter.ListCategoryEducationAdapter
 import id.maskology.ui.main.adapter.ListFunFactAdapter
 import id.maskology.ui.main.viewmodel.EducationViewModel
-import id.maskology.ui.main.viewmodel.HomeViewModel
 
 class EducationFragment : Fragment(R.layout.fragment_education) {
 
